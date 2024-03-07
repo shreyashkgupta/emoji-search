@@ -21,7 +21,7 @@ variable "instance_name" {
 variable "instance_type" {
     type = string
     description = "Type of VM Instance"
-    default = "f1-micro"
+    default = "e2-medium"
 }
 
 variable "instance_state" {

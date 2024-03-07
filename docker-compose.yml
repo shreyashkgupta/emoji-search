@@ -3,9 +3,7 @@
 version: '3'
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports: [3000:3000]
   nginx:
     image: nginx:latest
