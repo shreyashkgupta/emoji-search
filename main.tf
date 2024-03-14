@@ -15,7 +15,7 @@ variable "project_id" {
 variable "instance_name" {
     type = string
     description = "Name of the Instance"
-    default = "gcp-new-region-vm"
+    default = "gcp-stop-test-vm"
 }
 
 variable "instance_type" {
