@@ -15,7 +15,7 @@ variable "project_id" {
 variable "instance_name" {
     type = string
     description = "Name of the Instance"
-    default = "gcp-new-region-vm"
+    default = "gcp-ip-test-3-vm"
 }
 
 variable "instance_type" {
@@ -27,7 +27,7 @@ variable "instance_type" {
 variable "instance_state" {
     type = string
     description = "Instance state"
-    default = "running"
+    default = "RUNNING"
 }
 
 variable "env_file_content" {
@@ -60,6 +60,7 @@ data "google_compute_zones" "available" {
 resource "google_project_service" "compute_service" {
   project = var.project_id
   service = "compute.googleapis.com"
+  disable_on_destroy = false
 }
 
 
@@ -67,6 +68,8 @@ resource "google_compute_instance" "default" {
   name         = var.instance_name
   machine_type = var.instance_type
   zone = data.google_compute_zones.available.names[0]
+
+  desired_status = var.instance_state
 
   boot_disk {
     initialize_params {
